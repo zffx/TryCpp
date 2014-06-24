@@ -1,5 +1,5 @@
 #include <iostream>
-#include <assert.h>
+
 
 #include "Declarations.h"
 
@@ -15,7 +15,8 @@ int main(int argc, char** argv) {
     cout << "Input the number to run:" <<endl
          << "1. Pointer to Sturct, where would it crash?" << endl
          << "2. Virtual Destructor." << endl
-         << "3. Copy Constructor vs Assignment Operator." << endl;
+         << "3. Copy Constructor vs Assignment Operator." << endl
+         << "4. TryAssert." << endl;
     unsigned int choice = 0;
     cin >> choice ;
     switch(choice)
@@ -30,26 +31,14 @@ int main(int argc, char** argv) {
         CopyConstructorVsAssignmentOperator::
                 copyConstructorVsAssignmentOperator();
         break;
+    case 4:
+        TryAssert::tryAssert();
+        break;
     default:
         break;
     }
 
-//    //assert
-//    //assert(false) will exit the program
-//    //assert(true) will continue
-//    //==================================================
-//    cout<<endl;
-//    cout<<"===Assert==="<<endl;
 
-//    bool IloveYou = true;
-//    assert(IloveYou);
-//    cout << "HelloWorld! I love you == true! \n";
-//    /*
-//        IloveYou = false;
-//        assert(IloveYou);
-//        cout << "HelloWorld! I love you == false! \n";
-//        */
-//    //==================================================
 
 
 

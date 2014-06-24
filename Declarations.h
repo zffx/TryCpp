@@ -16,4 +16,10 @@ struct foo{
 void pointerToStruct();
 }
 
+
+namespace TryAssert
+{
+void tryAssert();
+}
+
 #endif // DECLARATIONS_H

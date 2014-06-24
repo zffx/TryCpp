@@ -4,7 +4,8 @@ CONFIG -= qt
 
 SOURCES += main.cpp \
     PointerToStruct.cpp \
-    TryDefaultDestructor.cpp
+    TryDefaultDestructor.cpp \
+    TryAssert.cpp
 
 HEADERS += \
     Declarations.h \

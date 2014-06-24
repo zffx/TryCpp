@@ -10,7 +10,6 @@ public:
     CopyVSAssign() : data(0)
     {
         std::cout << "Default Constructor" << std::endl;
-        std::cout << std::endl;
     }
 
     CopyVSAssign(int i):data(i)
@@ -33,7 +32,6 @@ public:
     {
         data = b.data;
         std::cout << "Assignment Operator" << std::endl;
-        std::cout << std::endl;
         return *this;
     }
 
