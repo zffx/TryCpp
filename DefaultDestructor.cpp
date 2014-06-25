@@ -20,4 +20,14 @@ DefaultDestructor::~DefaultDestructor()
     std::cout << "DefaultDestructor::~DefaultDestructor() \n";
 }
 
+void defaultDestructor()
+{
+    //Default Destructor
+    std::cout<<std::endl;
+    std::cout<<"===Default Destructor==="<<std::endl;
+
+    DefaultDestructor* td = new DefaultDestructor;
+    delete td;
+}
+
 }

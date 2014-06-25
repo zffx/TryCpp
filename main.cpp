@@ -16,7 +16,8 @@ int main(int argc, char** argv) {
          << "2. Virtual Destructor." << endl
          << "3. Copy Constructor vs Assignment Operator." << endl
          << "4. TryAssert." << endl
-         << "5. Char[] and Char*" << endl;
+         << "5. Default Destructor." << endl
+         << "6. Char[] and Char*" << endl;
     unsigned int choice = 0;
     cin >> choice ;
     switch(choice)
@@ -35,23 +36,15 @@ int main(int argc, char** argv) {
         TryAssert::tryAssert();
         break;
     case 5:
+        DefaultDestructor::defaultDestructor();
+        break;
+    case 6:
         CharArrayAndPointer::charArrayAndPointer();
         break;
     default:
         break;
     }
 
-
-
-//    //Default Destructor
-//    //==================================================
-//    cout<<endl;
-//    cout<<"===Default Destructor==="<<endl;
-
-//    TryDefaultDestructor* td = new TryDefaultDestructor;
-//    delete td;
-//    //TryDefaultDestructor td;
-//    //==================================================
 
 
 //    //new and delete

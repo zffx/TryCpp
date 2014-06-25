@@ -5,6 +5,7 @@ CONFIG -= qt
 SOURCES += main.cpp \
     PointerToStruct.cpp \
     CharArrayAndPointer.cpp \
+    DefaultDestructor.cpp \
     TryAssert.cpp
 
 HEADERS += \
