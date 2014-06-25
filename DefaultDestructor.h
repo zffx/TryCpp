@@ -1,15 +1,18 @@
-#ifndef TRYDEFAULTDESTRUCTOR_H
-#define TRYDEFAULTDESTRUCTOR_H
+#ifndef DefaultDestructor_H
+#define DefaultDestructor_H
 
-class TryDefaultDestructor
+namespace DefaultDestructor
+{
+class DefaultDestructor
 {
 public:
-    TryDefaultDestructor();
+    DefaultDestructor();
 
-    TryDefaultDestructor(int i):mInt(i){}
+    DefaultDestructor(int i):mInt(i){}
 
-    ~TryDefaultDestructor();
+    ~DefaultDestructor();
+
     int mInt;
 };
-
-#endif // TRYDEFAULTDESTRUCTOR_H
+}
+#endif // DefaultDestructor_H

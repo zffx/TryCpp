@@ -7,16 +7,16 @@
 #include "DefaultDestructor.h"
 #include "VirtualDestructor.h"
 
-
 using namespace std;
 
 int main(int argc, char** argv) {
 
     cout << "Input the number to run:" <<endl
-         << "1. Pointer to Sturct, where would it crash?" << endl
+         << "1. Pointer to Sturct, where would it crash." << endl
          << "2. Virtual Destructor." << endl
          << "3. Copy Constructor vs Assignment Operator." << endl
-         << "4. TryAssert." << endl;
+         << "4. TryAssert." << endl
+         << "5. Char[] and Char*" << endl;
     unsigned int choice = 0;
     cin >> choice ;
     switch(choice)
@@ -34,28 +34,13 @@ int main(int argc, char** argv) {
     case 4:
         TryAssert::tryAssert();
         break;
+    case 5:
+        CharArrayAndPointer::charArrayAndPointer();
+        break;
     default:
         break;
     }
 
-
-
-
-
-//    //char* and char[]
-//    //==================================================
-//    cout<<endl;
-//    cout<<"===char* and char[]==="<<endl;
-
-//    //char* p = "abcd";
-//    char p[] = "abcd";
-//    cout<< p[0] << p[1] << p[2] << p[3] <<endl;
-//    cout<< p << "\t" << *p << endl;
-//    //p[0] = 'x';
-//    *p = 'x';
-//    cout<< p[0] << p[1] << p[2] << p[3] <<endl;
-//    cout<< p << "\t" << *p << endl;
-//    //==================================================
 
 
 //    //Default Destructor

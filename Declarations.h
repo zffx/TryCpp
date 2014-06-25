@@ -22,4 +22,8 @@ namespace TryAssert
 void tryAssert();
 }
 
+namespace CharArrayAndPointer
+{
+void charArrayAndPointer();
+}
 #endif // DECLARATIONS_H
