@@ -17,7 +17,8 @@ int main(int argc, char** argv) {
          << "3. Copy Constructor vs Assignment Operator." << endl
          << "4. TryAssert." << endl
          << "5. Default Destructor." << endl
-         << "6. Char[] and Char*" << endl;
+         << "6. Char[] and Char*" << endl
+         << "7. New and Delete, wild pointer" << endl;
     unsigned int choice = 0;
     cin >> choice ;
     switch(choice)
@@ -41,11 +42,11 @@ int main(int argc, char** argv) {
     case 6:
         CharArrayAndPointer::charArrayAndPointer();
         break;
+    case 7:
+        //WildPointer::wildPointer();
     default:
         break;
     }
-
-
 
 //    //new and delete
 //    //wild pointer

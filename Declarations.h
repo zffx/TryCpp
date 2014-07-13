@@ -26,4 +26,5 @@ namespace CharArrayAndPointer
 {
 void charArrayAndPointer();
 }
+
 #endif // DECLARATIONS_H
