@@ -18,7 +18,6 @@ namespace PointerToStruct
             cout<<"line28"<<endl;
             printf(f.a->s);
             cout<<"line30"<<endl;
-
         }
         //==================================================
     }
