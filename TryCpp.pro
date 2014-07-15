@@ -6,11 +6,14 @@ SOURCES += main.cpp \
     PointerToStruct.cpp \
     CharArrayAndPointer.cpp \
     DefaultDestructor.cpp \
+    AssignValueWithPointer.cpp \
+    WildPointer.cpp \
     TryAssert.cpp
 
 HEADERS += \
     Declarations.h \
     CopyConstructorVsAssignmentOperator.h \
     DefaultDestructor.h \
+    WildPointer.h \
     VirtualDestructor.h
 
