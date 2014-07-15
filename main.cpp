@@ -1,8 +1,6 @@
 #include <iostream>
 
-
 #include "Declarations.h"
-
 #include "CopyConstructorVsAssignmentOperator.h"
 #include "DefaultDestructor.h"
 #include "VirtualDestructor.h"
@@ -44,35 +42,12 @@ int main(int argc, char** argv) {
         CharArrayAndPointer::charArrayAndPointer();
         break;
     case 7:
-        WildPointer::wildPointer();
+    	CaseWildPointer::wildPointer();
+    	break;
     default:
         break;
     }
 
-//    //new and delete
-//    //wild pointer
-//    //==================================================
-//    cout<<endl;
-//    cout<<"===New and Delete & Wild Pointer==="<<endl;
-
-//    TryDefaultDestructor* q = new TryDefaultDestructor(5);
-//    cout << "I new TryDefaultDestructor and assign it to q. *q.mInt = " << (*q).mInt << endl;
-
-//    delete q;
-//    cout << "I deleted q." << endl;
-
-//    if (q != 0)
-//    {
-//        cout << "is q null? No, q = " << q << endl;
-//    };
-//    cout << "I am not derefering the pointer q yet. q = " << q << endl;
-
-//    //q = 0;
-//    //cout << "I assign null to q now. q = " << q << endl;
-
-//    cout << "you should never see this output. I am calling a member of TryDefaultDestructor with q->mInt: "
-//         << q->mInt << endl;
-//    cout << "Seems I have some misunderstanding on wild pointer" << endl;
 
 
 //    int* p_i;

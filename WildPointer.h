@@ -1,17 +1,16 @@
 #ifndef WILDPOINTER_H
 #define WILDPOINTER_H
 
-namespace WildPointer
+namespace CaseWildPointer
 {
 
 class WildPointer
 {
 public:
 	WildPointer();
-	WildPointer(int i):mValue(i){};
-	~WildPointer();
-
+	WildPointer(int i);
 	int getValue();
+
 private:
 	int mValue;
 };

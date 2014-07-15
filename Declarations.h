@@ -27,4 +27,8 @@ namespace CharArrayAndPointer
 void charArrayAndPointer();
 }
 
+namespace AssignValueWithPointer
+{
+void assignValueWithPointer();
+}
 #endif // DECLARATIONS_H
