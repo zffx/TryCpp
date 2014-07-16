@@ -3,7 +3,6 @@
 
 namespace PointerToStruct
 {
-
 struct str{
     int len;
     char s[1];
@@ -15,7 +14,6 @@ struct foo{
 
 void pointerToStruct();
 }
-
 
 namespace TryAssert
 {
