@@ -1,5 +1,7 @@
 Makefile
 Makefile.Debug
 Makefile.Release
-TryCpp.pro.user
+TryCpp.pro.user*
+vc100.pdb
 debug/
+release/

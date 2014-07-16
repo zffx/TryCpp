@@ -8,12 +8,14 @@ SOURCES += main.cpp \
     DefaultDestructor.cpp \
     AssignValueWithPointer.cpp \
     WildPointer.cpp \
-    TryAssert.cpp
+    TryAssert.cpp \
+    Inheritance.cpp
 
 HEADERS += \
     Declarations.h \
     CopyConstructorVsAssignmentOperator.h \
     DefaultDestructor.h \
     WildPointer.h \
-    VirtualDestructor.h
+    VirtualDestructor.h \
+    Inheritance.h
 
