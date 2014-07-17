@@ -12,90 +12,172 @@ double Ancestor::staticDoubleValue = 5.0;
 
 Ancestor::Ancestor()
 {
-    valueB = 1;
-    cout << "Constructor Base()" << endl;
+    cout << "Constructor Ancestor()" << endl;
 }
 
-Ancestor::Ancestor(int n): a(n)
+Ancestor::~Ancestor()
 {
-    cout << "Constructor Base(int n)" << endl;
+    cout << "Destructor ~Ancestor()" << endl;
 }
 
-/*
-void Base::fcA()
+/* ============ Begin of Implementation of SecondGeneration ==============*/
+SecondGeneration::SecondGeneration() : mPublicValueB(2), mPrivateValueC(2)
 {
-    cout << "Base\'s fcA() called" << endl;
-}
-*/
-
-/*
-void Base::fcB()
-{
-    cout << "Base\'s fcB() called" << endl;
-}
-*/
-
-void Ancestor::f()
-{
-    cout << "Base\'s f() called" << endl;
+    cout << "Constructor SecondGeneration()" << endl;
 }
 
-/* ================= Begin of Implementation of Derive1 =====================*/
-SecondGeneration::SecondGeneration()
+SecondGeneration::SecondGeneration(int n) : mPublicValueB(n)
 {
-    valueB = 2;
-    cout << "Constructor Derive1()" << endl;
-}
-
-SecondGeneration::SecondGeneration(int n)
-{
-    valueB = n = 2 ;
-    cout << "Constructor Derive1(int n)" << endl;
+    cout << "Constructor SecondGeneration(int n)" << endl;
 }
 
 void SecondGeneration::pureVirtualFunctionA()
 {
-    cout << "Derive1\'s fcA() called" << endl;
+    cout << "SecondGeneration\'s pureVirtualFunctionA() called" << endl;
 }
 
-void SecondGeneration::fcB()
+void SecondGeneration::virtualFunctionB()
 {
-    cout << this->Ancestor::valueB << endl;
     staticDoubleValue = staticDoubleValue + 1.0;
-    cout << sizeof(Ancestor::staticDoubleValue)<< "\t s value: "
-         <<staticDoubleValue <<endl;
-    cout << "Derive1\'s fcB() called" << endl;
+    cout << "staticDoubleValue\'s value: " << staticDoubleValue <<endl;
+    cout << "SecondGeneration\'s virtualFunctionB() called" << endl;
 }
 
-/* ================= Begin of Implementation of Derive2 =====================*/
-
-void SecondGeneration::f()
+int SecondGeneration::hiddenMemberFunction()
 {
-    cout << "Derive1\'s f() called" << endl;
+    cout << "SecondGeneration\'s hiddenMemberFunction() called" << endl;
+    return mPrivateValueC;
 }
+
+int SecondGeneration::getPrivateValueC()
+{
+    cout << "SecondGeneration\'s getPrivateValueC() called" << endl;
+    return mPrivateValueC;
+}
+
+
+/* ============= Begin of Implementation of ThirdGeneration ===============*/
+ThirdGeneration::ThirdGeneration() : mPublicValueB(3)
+{
+    cout << "Constructor ThirdGeneration()" << endl;
+}
+
+ThirdGeneration::ThirdGeneration(int n) :
+    SecondGeneration::SecondGeneration(n),
+    mPublicValueB(3)
+{
+    cout << "Constructor ThirdGeneration(n)" << endl;
+}
+
+void ThirdGeneration::virtualFunctionB()
+{
+    staticDoubleValue = staticDoubleValue + 10.0;
+    cout << "staticDoubleValue\'s value: " << staticDoubleValue <<endl;
+    cout << "ThirdGeneration's virtualFunctionB() called" << endl;
+}
+
+int ThirdGeneration::hiddenMemberFunction(int i)
+{
+    cout << "ThirdGeneration's hiddenMemberFunction(int i) called" << endl;
+    cout << "SecondGeneration's hiddenMemberFunction() is hidden" << endl;
+    cout << "i :" << i << endl;
+
+    /*
+    The next line won't work as ThirdGeneration doesn't inherit
+    SecondGeneration's mPrivateValueC
+    */
+    //return mPrivateValueC;
+
+    /*
+    The next line would return ThirdGeneration::mPublicValueB instead
+    of SecondGeneration::mPublicValueB
+    */
+    //return mPublicValueB;
+
+    /*
+    to return SecondGeneration::mPublicValueB, it should be:
+    */
+    //return SecondGeneration::mPublicValueB;
+
+    /*
+    Though mPrivateValueC is not inherited and cannot be accessed
+    directly, the memory of an instance of ThirdGeneration still has
+    SecondGeneration::mPrivateValueC
+    */
+    return getPrivateValueC();
+}
+
+void ThirdGeneration::derivedSpecificFunction()
+{
+    cout << "ThirdGeneration's drivedSpecificFunction() called" << endl;
+}
+
+/* ============= Begin of Implementation of Test Code ===============*/
 
 void inheritance()
 {
-    //You cannot instantiate a abstract class directly with constructor,
-    //The following line gives a compiling error:
-    //cannot allocate an object of abstract type 'CaseInheritance::Base'
+    /*
+    You cannot instantiate a abstract class directly with constructor,
+    The following line gives a compiling error:
+    cannot allocate an object of abstract type 'CaseInheritance::Base'
+    */
     //Ancestor* instanceAncestor = new Ancestor();
 
+    //Show how function is hidden in derived class
+    ThirdGeneration *instanceThirdGeneration = new ThirdGeneration();
+    instanceThirdGeneration->hiddenMemberFunction(4);
+    cout << "\n\n\n";
 
-    //Base* instance = new Derive1();
-    SecondGeneration* instance = new SecondGeneration(5);
-    //Derive1* instance = new Base(5);
-    //cout << sizeof(s)<< "\t s value: " <<s <<endl;
-    instance->fcB();
-    Ancestor* instance_base = instance;
-    cout << sizeof(*instance_base)<<endl;
-    cout << sizeof(*instance)<<endl;
-    instance->pureVirtualFunctionA();
-    cout << sizeof(Ancestor::staticDoubleValue)<< "\t s value: "
+    //Show normal polymorphism with virtual function
+    SecondGeneration *instanceSecondGeneration = new SecondGeneration();
+    instanceSecondGeneration->virtualFunctionB();
+    delete instanceSecondGeneration;
+    instanceSecondGeneration = new ThirdGeneration();
+    instanceSecondGeneration->virtualFunctionB();
+    delete instanceSecondGeneration;
+    instanceSecondGeneration = NULL;
+    cout << "\n\n\n";
+
+    //Show downcast pointer to call specific funtions in derived class
+    instanceSecondGeneration = new ThirdGeneration();
+    /*
+    The following line wont work, it will have a compiling error:
+    'class CaseInheritance::SecondGeneration' has no member named
+    'derivedSpecificFunction'
+    */
+    //instanceSecondGeneration->derivedSpecificFunction();
+    static_cast<ThirdGeneration*>(instanceSecondGeneration)
+            ->derivedSpecificFunction();
+    delete instanceSecondGeneration;
+    instanceSecondGeneration = NULL;
+    cout << "\n\n\n";
+
+    //Check the size of each class:
+    instanceSecondGeneration = new SecondGeneration();
+    cout << "sizeof(SecondGeneration): "
+         << sizeof(*instanceSecondGeneration)<< endl;
+    delete instanceSecondGeneration;
+    instanceSecondGeneration = NULL;
+
+    instanceThirdGeneration = new ThirdGeneration();
+    cout << "sizeof(ThirdGeneration): "
+         << sizeof(*instanceThirdGeneration)<< endl;
+    delete instanceThirdGeneration;
+    instanceThirdGeneration = NULL;
+    cout << "\n\n\n";
+
+    //Show the static member member is shared by all of super and derived classes
+
+    cout << "Ancestor::staticDoubleValue: "
+         << Ancestor::staticDoubleValue <<endl;
+    Ancestor::staticDoubleValue++;
+
+    cout << "SecondGeneration::staticDoubleValue: "
          << SecondGeneration::staticDoubleValue <<endl;
-    cout << instance->valueB << instance->Ancestor::valueB << endl;
-    delete instance;
-    instance=NULL;
+    SecondGeneration::staticDoubleValue++;
+
+    cout << "ThirdGeneration::staticDoubleValue: "
+         << ThirdGeneration::staticDoubleValue <<endl;
 }
 
 }
