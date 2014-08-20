@@ -11,8 +11,12 @@ class ExploreReference
 public:
     ExploreReference();
 
-    std::string& getRef() const;
+    std::string& getRef();
     void setRef(const std::string &ref);
+
+    std::string& getValue();
+    const std::string& getValueConst() const;
+    void setValue(const std::string &value);
 
 private:
     std::string& mRef;
