@@ -9,7 +9,8 @@ SOURCES += main.cpp \
     AssignValueWithPointer.cpp \
     WildPointer.cpp \
     TryAssert.cpp \
-    Inheritance.cpp
+    Inheritance.cpp \
+    Explorereference.cpp
 
 HEADERS += \
     Declarations.h \
@@ -17,5 +18,6 @@ HEADERS += \
     DefaultDestructor.h \
     WildPointer.h \
     VirtualDestructor.h \
-    Inheritance.h
+    Inheritance.h \
+    Explorereference.h
 

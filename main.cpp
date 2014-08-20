@@ -6,6 +6,7 @@
 #include "VirtualDestructor.h"
 #include "WildPointer.h"
 #include "Inheritance.h"
+#include "Explorereference.h"
 
 using namespace std;
 
@@ -20,7 +21,8 @@ int main(int argc, char** argv) {
          << "6. Char[] and Char*" << endl
          << "7. New and Delete, wild pointer" << endl
          << "8. Assign value with operation of pointer" << endl
-         << "9. Inheritance" << endl;
+         << "9. Inheritance" << endl
+         << "10. Reference as parameter and return value";
 
     unsigned int choice = 0;
     cin >> choice;
@@ -54,6 +56,9 @@ int main(int argc, char** argv) {
         break;
     case 9:
         CaseInheritance::inheritance();
+        break;
+    case 10:
+        CaseReference::reference();
         break;
     default:
         break;
