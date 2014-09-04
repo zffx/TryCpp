@@ -17,7 +17,6 @@ ExploreReference::ExploreReference() : mRef(ref), mValue("DefaultValue")
 
 void ExploreReference::setRef(const std::string &ref)
 {
-    cout << "ExploreReference::setRef()" << endl;
     mRef = ref;
 }
 
@@ -29,19 +28,16 @@ std::string& ExploreReference::getRef()
 
 std::string& ExploreReference::getValue()
 {
-    //cout << "ExploreReference::getValue()" << endl;
     return mValue;
 }
 
 const std::string& ExploreReference::getValueConst() const
 {
-    //cout << "ExploreReference::getValueConst()" << endl;
     return mValue;
 }
 
 void ExploreReference::setValue(const std::string &value)
 {
-    //cout << "ExploreReference::setValue()" << endl;
     mValue = value;
 }
 
@@ -58,8 +54,8 @@ void reference()
 
     CaseReference::ref =  "Second Ref";
     cout << "\nstd::string ref changed to Second Ref" << endl;
-    std::string &tmpRef = instance.getRef();
 
+    std::string &tmpRef = instance.getRef();
     cout << "instance.getRef():" << tmpRef << endl;
     tmpRef = "Third Ref";
     cout << "\nstd::string &tmpRef changed to Third Ref" << endl;
@@ -82,7 +78,7 @@ void reference()
     value = "ChangedValue";
     cout << "value changed to ChangedValue" << endl;
     /*instance.value will not change
-    if the returned reference is received by a normal string*/
+    if the returned reference is received by a normal string, the value is copied*/
     cout << "instance.getValue()= " << instance.getValue() << endl;
 
 
@@ -90,6 +86,8 @@ void reference()
     valueRef = "ChangedValue";
     cout << "\nvalueRef changed to ChangedValue" << endl;
     cout << "instance.getValue()= " << instance.getValue() << endl;
+    /*instance.value will change
+    if the returned reference is received by a refernce to a string*/
 
     instance.getValue().clear();
     cout << "\ninstance.getValue().clear();" << endl;
@@ -101,8 +99,8 @@ void reference()
     /*instance.getValueConst().clear();*/ /*This is not allowed
     if we are returning a const reference*/
     valueRef = instance.getValueConst(); /*This is OK,
-    it doesn't stop you passing a const reference to a normal reference
-    and later if the normal reference changes,
+    it doesn't stop you passing a const reference to a normal reference,
+    but later if the normal reference changes,
     the value of member variable changes too.
     */
     valueRef = "2ndChangedValue";
